@@ -1,0 +1,66 @@
+﻿@page
+@model UI.Pages.Users.CreateModel
+@{
+    ViewData["Title"] = "Create Users";
+}
+
+<h1>Create Users</h1>
+
+<form method="post">
+    <fieldset>
+        <legend>User Details</legend>
+
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="Users[0].FirstName" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="Users[0].LastName" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="Users[0].Age" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="dateOfBirth">Date of Birth</label>
+            <input type="date" id="dateOfBirth" name="Users[0].DateOfBirth" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text" id="country" name="Users[0].Country" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="province">Province</label>
+            <input type="text" id="province" name="Users[0].Province" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="city" name="Users[0].City" class="form-control" required />
+        </div>
+
+        <!-- Password fields -->
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="Users[0].Password" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="Users[0].ConfirmPassword" class="form-control" required />
+        </div>
+
+    </fieldset>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

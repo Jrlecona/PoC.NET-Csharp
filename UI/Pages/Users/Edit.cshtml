@@ -1,0 +1,57 @@
+﻿@page "{id:int}"
+@model UI.Pages.Users.EditModel
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<h1>Edit User</h1>
+
+<form method="post">
+    <fieldset>
+        <legend>Edit User</legend>
+
+        <input type="hidden" asp-for="User.Id" />
+
+        <div class="form-group">
+            <label asp-for="User.FirstName"></label>
+            <input asp-for="User.FirstName" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="User.LastName"></label>
+            <input asp-for="User.LastName" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="User.Age"></label>
+            <input asp-for="User.Age" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="User.DateOfBirth"></label>
+            <input asp-for="User.DateOfBirth" type="date" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="User.Country"></label>
+            <input asp-for="User.Country" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="User.Province"></label>
+            <input asp-for="User.Province" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="User.City"></label>
+            <input asp-for="User.City" class="form-control" />
+        </div>
+
+    </fieldset>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,78 @@
+﻿@page
+@model UI.Pages.Users.IndexModel
+@{
+    ViewData["Title"] = "Users List";
+}
+
+<h1 class="my-4">Users List</h1>
+
+<!-- Filter Form -->
+<form method="get" class="mb-4">
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="age">Filter by Age</label>
+            <input type="number" id="age" name="age" value="@Model.Age" class="form-control" placeholder="Enter age" />
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="country">Filter by Country</label>
+            <input type="text" id="country" name="country" value="@Model.Country" class="form-control" placeholder="Enter country" />
+        </div>
+
+        <div class="form-group col-md-2 align-self-end">
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </div>
+    </div>
+</form>
+
+<!-- Users Table -->
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Country</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.Age</td>
+                <td>@user.Country</td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@user.Id" class="btn btn-sm btn-info">Edit</a>
+                    <a asp-page="./ChangePassword" asp-route-id="@user.Id" class="btn btn-sm btn-warning">Change Password</a>
+                    <a asp-page="./Delete" asp-route-id="@user.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Pagination -->
+<nav aria-label="User pagination" class="mt-4">
+    <ul class="pagination">
+        @if (Model.PageNumber > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-page="./Index" asp-route-pageNumber="@(Model.PageNumber - 1)">Previous</a>
+            </li>
+        }
+
+        <li class="page-item disabled">
+            <span class="page-link">Page @Model.PageNumber of @Model.TotalPages</span>
+        </li>
+
+        @if (Model.PageNumber < Model.TotalPages)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-page="./Index" asp-route-pageNumber="@(Model.PageNumber + 1)">Next</a>
+            </li>
+        }
+    </ul>
+</nav>
